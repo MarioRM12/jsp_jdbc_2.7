@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" build-on-make="true" name="jsp_jdbc_mejorado">
+    <output-path>$PROJECT_DIR$/out/artifacts/jsp_jdbc_mejorado</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="jsp_jdbc_avanzado" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="jsp_jdbc_avanzado/web/Web" />
+    </root>
+  </artifact>
+</component>

@@ -60,14 +60,6 @@
     } catch (Exception ex) {
         ex.printStackTrace();
 
-        // Seteamos los errores en la sesión
-        if (!flagValidaNumero) {
-            session.setAttribute("errorNumero", "Error en número.");
-        }
-        if (!flagValidaNombreNull || !flagValidaNombreBlank) {
-            session.setAttribute("errorNombre", "Error en nombre.");
-        }
-
         if (!flagValidaNumero) {
             session.setAttribute("error", "Error en número.");
         } else if (!flagValidaNombreNull || !flagValidaNombreBlank) {
@@ -91,9 +83,6 @@
         Connection conn = null;
         PreparedStatement ps = null;
 // 	ResultSet rs = null;
-
-        session.setAttribute("socioIDADestacar", numero);
-        response.sendRedirect("pideNumeroSocio.jsp");
 
         try {
 
