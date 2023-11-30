@@ -40,14 +40,5 @@
       // ... (limpiar otros posibles errores)
     %>
 
-  <%
-    String error = (String)session.getAttribute("error");
-    if ( error != null) {
-      %>
-    <span style="background-color: red;color: yellow"><%=error%></span>
-    <%
-      session.removeAttribute("error");
-    }
-  %>
   </body>
 </html>

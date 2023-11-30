@@ -80,8 +80,6 @@
             session.setAttribute("error", "Error en localidad.");
         }
 
-
-
         valida = false;
     }
     //FIN CÓDIGO DE VALIDACIÓN
@@ -102,16 +100,6 @@
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/baloncesto", "root", "user");
 
-
-//>>>>>>NO UTILIZAR STATEMENT EN QUERIES PARAMETRIZADAS
-//       Statement s = conexion.createStatement();
-//       String insercion = "INSERT INTO socio VALUES (" + Integer.valueOf(request.getParameter("numero"))
-//                          + ", '" + request.getParameter("nombre")
-//                          + "', " + Integer.valueOf(request.getParameter("estatura"))
-//                          + ", " + Integer.valueOf(request.getParameter("edad"))
-//                          + ", '" + request.getParameter("localidad") + "')";
-//       s.execute(insercion);
-//<<<<<<
 
             String sql = "INSERT INTO socio VALUES ( " +
                     "?, " + //socioID
@@ -151,7 +139,6 @@
         //response.sendRedirect("detalleSocio.jsp?socioID="+numero);
         //response.sendRedirect("pideNumeroSocio.jsp?socioIDADestacar="+numero);
         session.setAttribute("socioIDADestacar", numero);
-        response.sendRedirect("pideNumeroSocio.jsp");
 
 } else {
         //out.println("Error de validación!");

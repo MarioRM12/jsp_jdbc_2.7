@@ -60,6 +60,14 @@
     } catch (Exception ex) {
         ex.printStackTrace();
 
+        // Seteamos los errores en la sesión
+        if (!flagValidaNumero) {
+            session.setAttribute("errorNumero", "Error en número.");
+        }
+        if (!flagValidaNombreNull || !flagValidaNombreBlank) {
+            session.setAttribute("errorNombre", "Error en nombre.");
+        }
+
         if (!flagValidaNumero) {
             session.setAttribute("error", "Error en número.");
         } else if (!flagValidaNombreNull || !flagValidaNombreBlank) {
@@ -72,8 +80,6 @@
             session.setAttribute("error", "Error en localidad.");
         }
 
-
-
         valida = false;
     }
     //FIN CÓDIGO DE VALIDACIÓN
@@ -84,6 +90,9 @@
         PreparedStatement ps = null;
 // 	ResultSet rs = null;
 
+        session.setAttribute("socioIDADestacar", numero);
+        response.sendRedirect("pideNumeroSocio.jsp");
+
         try {
 
             //CARGA DEL DRIVER Y PREPARACIÓN DE LA CONEXIÓN CON LA BBDD
@@ -91,16 +100,6 @@
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/baloncesto", "root", "user");
 
-
-//>>>>>>NO UTILIZAR STATEMENT EN QUERIES PARAMETRIZADAS
-//       Statement s = conexion.createStatement();
-//       String insercion = "INSERT INTO socio VALUES (" + Integer.valueOf(request.getParameter("numero"))
-//                          + ", '" + request.getParameter("nombre")
-//                          + "', " + Integer.valueOf(request.getParameter("estatura"))
-//                          + ", " + Integer.valueOf(request.getParameter("edad"))
-//                          + ", '" + request.getParameter("localidad") + "')";
-//       s.execute(insercion);
-//<<<<<<
 
             String sql = "INSERT INTO socio VALUES ( " +
                     "?, " + //socioID
@@ -140,7 +139,6 @@
         //response.sendRedirect("detalleSocio.jsp?socioID="+numero);
         //response.sendRedirect("pideNumeroSocio.jsp?socioIDADestacar="+numero);
         session.setAttribute("socioIDADestacar", numero);
-        response.sendRedirect("pideNumeroSocio.jsp");
 
 } else {
         //out.println("Error de validación!");
